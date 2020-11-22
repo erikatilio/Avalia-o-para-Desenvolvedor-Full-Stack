@@ -1,0 +1,44 @@
+<div class="mt-4" style="width: 400px; margin: auto;">
+    <div *ngIf="mensagem !== '' " class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ mensagem }}
+        <button type="button" (click)="setMessagem()" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div *ngIf="atualColaborador" class="edit-form">
+        <form>
+            <div class="form-group row">
+                <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" [(ngModel)]="atualColaborador.nome" name="nome" />
+            </div>
+            <div class="form-group row">
+                <label for="cpf" class="col-sm-2 col-form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf" [(ngModel)]="atualColaborador.cpf" name="cpf" />
+            </div>
+            <div class="form-group row">
+                <label for="cargo" class="col-sm-2 col-form-label">Cargo</label>
+                <input type="text" class="form-control" id="cargo" [(ngModel)]="atualColaborador.cargo" name="cargo" />
+            </div>
+            <div class="form-group row">
+                <label for="setor" class="col-sm-2 col-form-label">Setor</label>
+                <input type="text" class="form-control" id="setor" [(ngModel)]="atualColaborador.setor" name="setor" />
+            </div>
+
+        </form>
+
+        <button class="btn btn-danger mr-2" (click)="deleteColaborador()">
+            <i class="far fa-trash-alt"></i> Apagar
+        </button>
+
+        <button type="submit" class="btn btn-success" (click)="updateColaborador()">
+            <i class="fas fa-sync-alt"></i> Atualizar
+        </button>
+    </div>
+
+    <div *ngIf="!atualColaborador">
+        <br />
+        <div class="alert alert-warning" role="alert">
+            Não foi possivel acessar o colaborador! :(
+        </div>
+    </div>
+</div>
